@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class followCamera : MonoBehaviour
 {
-    public Transform camera;
+    public Transform kamera;
     // Start is called before the first frame update
     void Start()
     { 
@@ -13,9 +13,9 @@ public class followCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 newThing = camera.transform.forward;
+        Vector3 newThing = kamera.transform.forward;
         newThing.y = 0;
-        newThing = Quaternion.AngleAxis(90, Vector3.up) * newThing;
+        //newThing = Quaternion.AngleAxis(90, Vector3.up) * newThing;
         transform.forward = newThing; 
     }
 }

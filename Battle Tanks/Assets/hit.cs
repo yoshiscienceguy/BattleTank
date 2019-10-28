@@ -6,6 +6,7 @@ public class hit : MonoBehaviour
 {
     public GameObject Explosion;
     public GameObject smoke;
+    public float damage = 5;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +27,7 @@ public class hit : MonoBehaviour
         }
         GameObject clone = Instantiate(Explosion, transform.position, Quaternion.identity);
         GameObject clone2 = Instantiate(smoke, transform.position, Quaternion.identity);
-        Destroy(clone2, 10);
+        Destroy(clone2, 7);
         Destroy(clone, 4);
         Destroy(gameObject);
     }

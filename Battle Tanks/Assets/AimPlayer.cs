@@ -7,6 +7,7 @@ public class AimPlayer : MonoBehaviour
     public float rotSpeed = 3;
     public bool tp;
     public float slowRot = .3f;
+    public Camera kamera;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +19,7 @@ public class AimPlayer : MonoBehaviour
     {
         if (tp)
         {
-            Vector3 dummy = Camera.main.transform.forward;
+            Vector3 dummy = kamera.transform.forward;
             dummy.y = 0;
 
             Vector3 destination = Quaternion.AngleAxis(-90, Vector3.up) * dummy;

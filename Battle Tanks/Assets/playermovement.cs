@@ -9,13 +9,12 @@ public class playermovement : MonoBehaviour
     public float gravity = 20;
     Vector3 Direction;
     Rigidbody rb;
-    Camera camera;
+    public Camera kamera;
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         rb = GetComponent<Rigidbody>();
-        camera = Camera.main;
     }
 
     // Update is called once per frame
@@ -27,16 +26,10 @@ public class playermovement : MonoBehaviour
 
         if (Physics.Raycast(transform.position,-transform.up,out hit, 15f))
         {
-            Direction = new Vector3(h*Yspeed, 0, v*Xspeed);
-            if (v < 0)
-            {
-                Direction.x = 0;
-                Direction = transform.GetChild(0).transform.TransformDirection(Direction);
-                
-            }
-            else {
-                Direction = camera.transform.TransformDirection(Direction);
-            }
+            Direction = new Vector3(h* Xspeed, 0, v*Yspeed);
+
+                Direction = kamera.transform.TransformDirection(Direction);
+          
             
             Direction.y = 0;
         }

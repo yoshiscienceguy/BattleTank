@@ -34,7 +34,7 @@ public class controlSwitch : MonoBehaviour
                 GetComponent<followPlayer>().enabled = false;
                 //cR.enabled = false;
                 transform.forward = fpsLocation.right;
-                movingBack = false;
+                //movingBack = false;
             }
             else {
                 transform.position = tpsLocation.position;
@@ -43,7 +43,7 @@ public class controlSwitch : MonoBehaviour
                 pm.enabled = true;
                 cR.enabled = true;
                 GetComponent<followPlayer>().enabled = true;
-                movingBack = true;
+                //movingBack = true;
             }
         }
         if (movingBack) {
