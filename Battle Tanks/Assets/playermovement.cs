@@ -13,6 +13,10 @@ public class playermovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (kamera == null)
+        {
+            kamera = Camera.main;
+        }
         Cursor.lockState = CursorLockMode.Locked;
         rb = GetComponent<Rigidbody>();
     }

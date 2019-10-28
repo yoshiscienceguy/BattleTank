@@ -7,7 +7,11 @@ public class followCamera : MonoBehaviour
     public Transform kamera;
     // Start is called before the first frame update
     void Start()
-    { 
+    {
+        if (kamera == null)
+        {
+            kamera = Camera.main.transform;
+        }
     }
 
     // Update is called once per frame

@@ -9,6 +9,9 @@ public class CharacterRotation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (kamera == null) {
+            kamera = Camera.main;
+        }
     }
 
     // Update is called once per frame
