@@ -19,7 +19,8 @@ public class controlSwitch : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ap.tp = true;
+        if(ap)
+            ap.tp = true;
 
     }
 

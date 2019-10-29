@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class shooting : MonoBehaviour
+public class shooting : NetworkBehaviour
 {
     public GameObject Projectile;
     public Transform barrel;
@@ -23,15 +24,21 @@ public class shooting : MonoBehaviour
             currentTime += Time.deltaTime;
         }
         if (Input.GetMouseButtonDown(0) && currentTime >= frequency) {
-            GameObject flash = Instantiate(Flash, barrel.position, barrel.rotation);
-            flash.GetComponent<ParticleSystem>().Play();
-            Destroy(flash, 1.5f);
-            GameObject clone = Instantiate(Projectile, barrel.position, barrel.rotation);
-            clone.layer = gameObject.layer;
-            clone.GetComponent<Rigidbody>().AddForce(shootingSpeed * barrel.forward, ForceMode.Impulse);
-            Destroy(clone, 3);
-            currentTime = 0;
-           
+
+            Cmdshoot();
         }
+    }
+    [Command]
+    public void Cmdshoot() {
+        GameObject flash = Instantiate(Flash, barrel.position, barrel.rotation);
+        NetworkServer.Spawn(flash);
+        flash.GetComponent<ParticleSystem>().Play();
+        Destroy(flash, 1.5f);
+        GameObject clone = Instantiate(Projectile, barrel.position, barrel.rotation);
+        NetworkServer.Spawn(clone);
+        clone.layer = gameObject.layer;
+        clone.GetComponent<Rigidbody>().AddForce(shootingSpeed * barrel.forward, ForceMode.Impulse);
+        Destroy(clone, 3);
+        currentTime = 0;
     }
 }

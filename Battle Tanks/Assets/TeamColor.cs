@@ -18,19 +18,34 @@ public class TeamColor : NetworkBehaviour
     public Transform fpsLocation;
     public Transform tpsLocation;
     public Transform pivotPoint;
+    public followCamera fc;
+    public AudioListener al;
+    public Camera c;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (isLocalPlayer) {
-    
+        if (isLocalPlayer)
+        {
+
             cs.ap = ap;
             cs.fpsLocation = fpsLocation;
             cs.tpsLocation = tpsLocation;
-     
+
             cs.pivotPoint = pivotPoint;
-            cs.GetComponent<followPlayer>().player = transform;
+            cs.GetComponent<followPlayer>().player = transform.GetChild(2);
             ap.enabled = true;
+            al.enabled = true;
+            c.enabled = true;
+        }
+        else {
+
+            ap.enabled = false;
+            GetComponent<CharacterRotation>().enabled = false;
+            GetComponent<shooting>().enabled = false;
+            //fc.enabled = false;
+            c.enabled = false;
+            al.enabled = false;
         }
         updateTeam(currentTeam);
            

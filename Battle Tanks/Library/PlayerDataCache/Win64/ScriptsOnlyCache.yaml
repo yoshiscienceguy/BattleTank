@@ -14,10 +14,12 @@ ScriptsOnlyBuild:
     - shooting
     Mirror.Components.dll:
     - Mirror.NetworkTransform
+    - Mirror.NetworkTransformChild
     Mirror.dll:
     - Mirror.NetworkIdentity
     - Mirror.NetworkManager
     - Mirror.NetworkManagerHUD
+    - Mirror.NetworkStartPosition
     - Mirror.TelepathyTransport
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -71,6 +73,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9472}
     - Class: 114
+      Script: {instanceID: 9474}
+    - Class: 114
       Script: {instanceID: 9486}
     - Class: 114
       Script: {instanceID: 9506}
@@ -102,6 +106,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 11240}
     - Class: 114
       Script: {instanceID: 11268}
+    - Class: 114
+      Script: {instanceID: 11344}
     - Class: 114
       Script: {instanceID: 11466}
     - Class: 115
@@ -873,7 +879,7 @@ ScriptsOnlyBuild:
     className: TMP_Asset
   - hash:
       serializedVersion: 2
-      Hash: b233eb3f90d9d0d9c16270b51ba56cf8
+      Hash: aa9eec023d550268b2201023ce939c78
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: controlSwitch
@@ -939,13 +945,13 @@ ScriptsOnlyBuild:
     className: PlayerController
   - hash:
       serializedVersion: 2
-      Hash: 6ddb7e950108fa146a774b0181e372c6
+      Hash: 05b93d0325b9d0d8597f82676afb6712
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: shooting
   - hash:
       serializedVersion: 2
-      Hash: a8bb3c26eab8d38d76419a27742821ea
+      Hash: fcd20ca79e3fa75b1724c2fe4789b8a4
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: TeamColor

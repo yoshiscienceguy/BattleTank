@@ -10,7 +10,7 @@ public class followCamera : MonoBehaviour
     {
         if (kamera == null)
         {
-            kamera = transform.parent.parent.parent.parent.GetChild(3).transform;
+            kamera = transform.parent.parent.transform;
         }
     }
 
@@ -19,7 +19,7 @@ public class followCamera : MonoBehaviour
     {
         Vector3 newThing = kamera.transform.forward;
         newThing.y = 0;
-        //newThing = Quaternion.AngleAxis(90, Vector3.up) * newThing;
+        newThing = Quaternion.AngleAxis(90, Vector3.up) * newThing;
         transform.forward = newThing; 
     }
 }
