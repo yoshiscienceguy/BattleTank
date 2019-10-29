@@ -13,7 +13,8 @@ public class AimPlayer : MonoBehaviour
     {
         if (kamera == null)
         {
-            kamera = Camera.main;
+            kamera = transform.parent.parent.GetChild(3).GetComponent<Camera>();
+
         }
 
     }

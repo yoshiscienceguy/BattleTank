@@ -1,20 +1,39 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
 public enum team {
     Team1, Team2, Team3, Team4
 };
-public class TeamColor : MonoBehaviour
+public class TeamColor : NetworkBehaviour
 {
 
     public Material[] teamColors;
     public MeshRenderer[] paintedObjects;
     public team currentTeam = team.Team1;
+    public controlSwitch cs;
+
+    public AimPlayer ap;
+    public Transform fpsLocation;
+    public Transform tpsLocation;
+    public Transform pivotPoint;
+
     // Start is called before the first frame update
     void Start()
     {
-        updateTeam(currentTeam); 
+        if (isLocalPlayer) {
+    
+            cs.ap = ap;
+            cs.fpsLocation = fpsLocation;
+            cs.tpsLocation = tpsLocation;
+     
+            cs.pivotPoint = pivotPoint;
+            cs.GetComponent<followPlayer>().player = transform;
+            ap.enabled = true;
+        }
+        updateTeam(currentTeam);
+           
     }
     public void updateTeam(team newTeam) {
         foreach (MeshRenderer mr in paintedObjects)

@@ -10,7 +10,7 @@ public class CharacterRotation : MonoBehaviour
     void Start()
     {
         if (kamera == null) {
-            kamera = Camera.main;
+            kamera = GetComponentInChildren<Camera>();
         }
     }
 

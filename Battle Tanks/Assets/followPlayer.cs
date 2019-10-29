@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class followPlayer : MonoBehaviour
+public class followPlayer : NetworkBehaviour
 {
     public Transform player;
     public float speed = 5;
@@ -10,7 +11,9 @@ public class followPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (isLocalPlayer) {
+            player = transform.parent.transform;
+        }
     }
 
     // Update is called once per frame

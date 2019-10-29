@@ -15,10 +15,11 @@ public class playermovement : MonoBehaviour
     {
         if (kamera == null)
         {
-            kamera = Camera.main;
+            kamera = GetComponentInChildren<Camera>();
         }
         Cursor.lockState = CursorLockMode.Locked;
         rb = GetComponent<Rigidbody>();
+
     }
 
     // Update is called once per frame

@@ -10,7 +10,7 @@ public class followCamera : MonoBehaviour
     {
         if (kamera == null)
         {
-            kamera = Camera.main.transform;
+            kamera = transform.parent.parent.parent.parent.GetChild(3).transform;
         }
     }
 
