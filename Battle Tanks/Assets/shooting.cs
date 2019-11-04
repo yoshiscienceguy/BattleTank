@@ -20,25 +20,42 @@ public class shooting : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (currentTime < frequency) {
             currentTime += Time.deltaTime;
         }
         if (Input.GetMouseButtonDown(0) && currentTime >= frequency) {
 
-            Cmdshoot();
+            shoot();
+            currentTime = 0;
         }
     }
     [Command]
-    public void Cmdshoot() {
+    void CmdAnnounceShoot() {
         GameObject flash = Instantiate(Flash, barrel.position, barrel.rotation);
         NetworkServer.Spawn(flash);
-        flash.GetComponent<ParticleSystem>().Play();
-        Destroy(flash, 1.5f);
+        
+        
         GameObject clone = Instantiate(Projectile, barrel.position, barrel.rotation);
         NetworkServer.Spawn(clone);
+        RpcaddForce(flash,clone);
+        
+    }
+    [ClientRpc]
+    void RpcaddForce(GameObject flash, GameObject clone) {
+        flash.GetComponent<ParticleSystem>().Play();
+        Destroy(flash, 1.5f);
         clone.layer = gameObject.layer;
         clone.GetComponent<Rigidbody>().AddForce(shootingSpeed * barrel.forward, ForceMode.Impulse);
         Destroy(clone, 3);
-        currentTime = 0;
+        
+    }
+    [Client]
+    public void shoot() {
+        if (!isLocalPlayer)
+            return;
+        CmdAnnounceShoot();
+
+        
     }
 }
