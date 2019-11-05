@@ -25,6 +25,7 @@ public class TeamColor : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameObject.Find("EntryCamera").SetActive(false);
         if (isLocalPlayer)
         {
 

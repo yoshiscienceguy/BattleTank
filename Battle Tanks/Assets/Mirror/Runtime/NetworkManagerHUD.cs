@@ -1,6 +1,7 @@
 // vis2k: GUILayout instead of spacey += ...; removed Update hotkeys to avoid
 // confusion if someone accidentally presses one.
 using System.ComponentModel;
+using UnityEditor;
 using UnityEngine;
 
 namespace Mirror
@@ -75,6 +76,8 @@ namespace Mirror
                     {
                         if (GUILayout.Button("LAN Server Only")) manager.StartServer();
                     }
+
+
                 }
                 else
                 {
