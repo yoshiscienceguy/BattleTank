@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace Mirror
 {
@@ -25,6 +26,7 @@ namespace Mirror
     public class NetworkManager : MonoBehaviour
     {
         public GameObject[] players;
+        public Dropdown dropDown;
         /// <summary>
         /// A flag to control whether the NetworkManager object is destroyed when the scene changes.
         /// <para>This should be set if your game has a single NetworkManager that exists for the lifetime of the process. If there is a NetworkManager in each scene, then this should not be set.</para>
@@ -233,8 +235,9 @@ namespace Mirror
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
-        public void ChangeTeam(int teamIndex) {
-            playerPrefab = players[teamIndex];
+        public void ChangeTeam() {
+            
+            playerPrefab = players[dropDown.value];
         }
         /// <summary>
         /// virtual so that inheriting classes' Start() can call base.Start() too
@@ -246,11 +249,16 @@ namespace Mirror
             // some transports might not be ready until Start.
             //
             // (tick rate is applied in StartServer!)
+            if (playerPrefab == null)
+            {
+                playerPrefab = players[dropDown.value];
+            }
+
             if (isHeadless && startOnHeadless)
             {
                 if (players.Length > 0)
                 {
-                    playerPrefab = players[0];
+                    playerPrefab = players[dropDown.value];
                 }
                 else{
                     Debug.LogError("There needs to be least 1 player in players list");
@@ -340,7 +348,10 @@ namespace Mirror
         public void StartClient()
         {
             InitializeSingleton();
-
+            if (players.Length > 0)
+            {
+                playerPrefab = players[dropDown.value];
+            }
             if (authenticator != null)
             {
                 authenticator.OnStartClient();
@@ -372,6 +383,9 @@ namespace Mirror
         /// </summary>
         public virtual void StartHost()
         {
+            if (playerPrefab == null) {
+                playerPrefab = players[dropDown.value];
+            }
             OnStartHost();
             if (StartServer())
             {
@@ -557,6 +571,10 @@ namespace Mirror
 
             if (playerPrefab != null)
             {
+                ClientScene.RegisterPrefab(playerPrefab);
+            }
+            else {
+                playerPrefab = players[dropDown.value];
                 ClientScene.RegisterPrefab(playerPrefab);
             }
             for (int i = 0; i < spawnPrefabs.Count; i++)

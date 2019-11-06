@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1929,7 +1929,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aab4c8111b7c411b9b92cf3dbc5bd4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  players: []
+  players:
+  - {fileID: 5500474397913654110, guid: 4932a051be1434f4386c20b1a4bced03, type: 3}
+  - {fileID: 5726881028087931514, guid: d3783af3cac34f944b0a9bafde5919ce, type: 3}
+  - {fileID: 3274790121326199117, guid: 84417b57a249d8141a67b8573ad035e2, type: 3}
+  - {fileID: 5799141731306298296, guid: 551bad0c968626943b0b5f06025b9f23, type: 3}
+  dropDown: {fileID: 1862513839}
   dontDestroyOnLoad: 1
   runInBackground: 1
   startOnHeadless: 1
@@ -1941,16 +1946,18 @@ MonoBehaviour:
   networkAddress: localhost
   maxConnections: 4
   authenticator: {fileID: 0}
-  playerPrefab: {fileID: 2749506247948838244, guid: 21b1f0f488d15d745917aff278239ed1,
-    type: 3}
+  playerPrefab: {fileID: 0}
   autoCreatePlayer: 1
   playerSpawnMethod: 1
   spawnPrefabs:
-  - {fileID: 2749506247948838244, guid: 21b1f0f488d15d745917aff278239ed1, type: 3}
+  - {fileID: 1000010254994808, guid: 9defeac88977c0d448aa4541073ee9e4, type: 3}
   - {fileID: 4438105730479469302, guid: 5808da8a3ea76ef428c80b6bca323460, type: 3}
   - {fileID: 1000011797152326, guid: acf39d9f4addf294d93fa56fa373961b, type: 3}
   - {fileID: 1000012560919920, guid: 85a8865d1bf4a63478038fae23776de8, type: 3}
-  - {fileID: 1000010254994808, guid: 9defeac88977c0d448aa4541073ee9e4, type: 3}
+  - {fileID: 3274790121326199117, guid: 84417b57a249d8141a67b8573ad035e2, type: 3}
+  - {fileID: 5726881028087931514, guid: d3783af3cac34f944b0a9bafde5919ce, type: 3}
+  - {fileID: 5799141731306298296, guid: 551bad0c968626943b0b5f06025b9f23, type: 3}
+  - {fileID: 5500474397913654110, guid: 4932a051be1434f4386c20b1a4bced03, type: 3}
 --- !u!4 &1272698883
 Transform:
   m_ObjectHideFlags: 0
@@ -2487,7 +2494,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1272698882}
         m_MethodName: ChangeTeam
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

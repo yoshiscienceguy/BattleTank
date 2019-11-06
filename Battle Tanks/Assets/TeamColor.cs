@@ -25,8 +25,15 @@ public class TeamColor : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject.Find("EntryCamera").SetActive(false);
-        GameObject.Find("HUDui").SetActive(false);
+        GameObject defCamera = GameObject.Find("EntryCamera");
+        if (defCamera) {
+            defCamera.SetActive(false);
+        }
+        GameObject hud = GameObject.Find("HUDui");
+        if (hud)
+        {
+            hud.SetActive(false);
+        }
         if (isLocalPlayer)
         {
 

@@ -28,10 +28,15 @@ ScriptsOnlyBuild:
     - UnityEngine.EventSystems.StandaloneInputModule
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
+    - UnityEngine.UI.Dropdown
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
     - UnityEngine.UI.InputField
+    - UnityEngine.UI.Mask
+    - UnityEngine.UI.ScrollRect
+    - UnityEngine.UI.Scrollbar
     - UnityEngine.UI.Text
+    - UnityEngine.UI.Toggle
     com.unity.multiplayer-hlapi.Runtime.dll:
     - UnityEngine.Networking.NetworkCallbacks
     - UnityEngine.Networking.NetworkIdentity
@@ -90,6 +95,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9544}
     - Class: 114
+      Script: {instanceID: 9548}
+    - Class: 114
       Script: {instanceID: 9550}
     - Class: 114
       Script: {instanceID: 9556}
@@ -98,43 +105,51 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9566}
     - Class: 114
+      Script: {instanceID: 9572}
+    - Class: 114
+      Script: {instanceID: 9590}
+    - Class: 114
+      Script: {instanceID: 9592}
+    - Class: 114
       Script: {instanceID: 9600}
     - Class: 114
       Script: {instanceID: 9602}
+    - Class: 114
+      Script: {instanceID: 9604}
     - Class: 114
       Script: {instanceID: 9874}
     - Class: 114
       Script: {instanceID: 9892}
     - Class: 114
-      Script: {instanceID: 10030}
+      Script: {instanceID: 9992}
     - Class: 114
-      Script: {instanceID: 10230}
+      Script: {instanceID: 10032}
     - Class: 114
-      Script: {instanceID: 10278}
+      Script: {instanceID: 10232}
     - Class: 114
-      Script: {instanceID: 10434}
+      Script: {instanceID: 10280}
     - Class: 114
-      Script: {instanceID: 10452}
+      Script: {instanceID: 10436}
     - Class: 114
       Script: {instanceID: 10454}
     - Class: 114
-      Script: {instanceID: 10480}
+      Script: {instanceID: 10456}
     - Class: 114
-      Script: {instanceID: 10650}
+      Script: {instanceID: 10482}
     - Class: 114
-      Script: {instanceID: 10788}
+      Script: {instanceID: 10652}
     - Class: 114
-      Script: {instanceID: 11044}
+      Script: {instanceID: 10790}
     - Class: 114
-      Script: {instanceID: 11240}
+      Script: {instanceID: 11046}
     - Class: 114
-      Script: {instanceID: 11268}
+      Script: {instanceID: 11242}
     - Class: 114
-      Script: {instanceID: 11344}
+      Script: {instanceID: 11270}
     - Class: 114
-      Script: {instanceID: 11466}
+      Script: {instanceID: 11346}
     - Class: 114
-      Script: {instanceID: 16682}
+      Script: {instanceID: 11468}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -276,7 +291,7 @@ ScriptsOnlyBuild:
     className: ActivationTrack
   - hash:
       serializedVersion: 2
-      Hash: 8eb11f41c8ff401e699b7cf075ef1775
+      Hash: a0d5d74a04412bfd43edf5847dbb99b5
     assemblyName: Mirror.dll
     namespaceName: Mirror
     className: NetworkManager
@@ -786,6 +801,12 @@ ScriptsOnlyBuild:
     className: AnimationPlayableAsset
   - hash:
       serializedVersion: 2
+      Hash: b2aab1ed6936c7e0aba45453d603eeaf
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Mirror
+    className: NewNetworkManager
+  - hash:
+      serializedVersion: 2
       Hash: f24783ee570eed24fd8d616ee6dde153
     assemblyName: Mirror.dll
     namespaceName: Mirror
@@ -864,7 +885,7 @@ ScriptsOnlyBuild:
     className: ZoneHandler
   - hash:
       serializedVersion: 2
-      Hash: 2ff63c6dc445e346b82540e6c29d6027
+      Hash: 2a1db67b67a000350942bec3c8be016c
     assemblyName: Mirror.Components.dll
     namespaceName: Mirror
     className: NetworkRoomManager
@@ -1038,7 +1059,7 @@ ScriptsOnlyBuild:
     className: NetworkRoomPlayer
   - hash:
       serializedVersion: 2
-      Hash: 603c8b8304cc29c03b2725254a87efa8
+      Hash: bd21b8c423f40b159d34dc0767b6cee5
     assemblyName: Mirror.Examples.dll
     namespaceName: Mirror.Examples.Additive
     className: AdditiveNetworkManager
@@ -1134,7 +1155,7 @@ ScriptsOnlyBuild:
     className: TimelineAsset
   - hash:
       serializedVersion: 2
-      Hash: 439093cf702544bde01983000fdfdc56
+      Hash: 1233b3a32b4fc3b5f546a5ab9bd744fb
     assemblyName: Mirror.Examples.dll
     namespaceName: 
     className: NetworkManagerPong
@@ -1170,7 +1191,7 @@ ScriptsOnlyBuild:
     className: ExtinguishableFire
   - hash:
       serializedVersion: 2
-      Hash: 2ff63c6dc445e346b82540e6c29d6027
+      Hash: 2a1db67b67a000350942bec3c8be016c
     assemblyName: Mirror.Examples.dll
     namespaceName: Mirror.Examples.NetworkRoom
     className: NetworkRoomManagerExt
@@ -1206,7 +1227,7 @@ ScriptsOnlyBuild:
     className: NetworkIdentity
   - hash:
       serializedVersion: 2
-      Hash: 2ff63c6dc445e346b82540e6c29d6027
+      Hash: 2a1db67b67a000350942bec3c8be016c
     assemblyName: Mirror.Components.dll
     namespaceName: Mirror
     className: NetworkLobbyManager
@@ -1342,12 +1363,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: b2aab1ed6936c7e0aba45453d603eeaf
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: Mirror
-    className: NewNetworkManager
   platform: 19
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
