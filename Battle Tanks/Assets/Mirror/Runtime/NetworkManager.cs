@@ -18,10 +18,13 @@ namespace Mirror
         RoundRobin
     }
 
+    
+
     [AddComponentMenu("Network/NetworkManager")]
     [HelpURL("https://mirror-networking.com/docs/Components/NetworkManager.html")]
     public class NetworkManager : MonoBehaviour
     {
+        public GameObject[] players;
         /// <summary>
         /// A flag to control whether the NetworkManager object is destroyed when the scene changes.
         /// <para>This should be set if your game has a single NetworkManager that exists for the lifetime of the process. If there is a NetworkManager in each scene, then this should not be set.</para>
@@ -230,6 +233,9 @@ namespace Mirror
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
+        public void ChangeTeam(int teamIndex) {
+            playerPrefab = players[teamIndex];
+        }
         /// <summary>
         /// virtual so that inheriting classes' Start() can call base.Start() too
         /// </summary>
@@ -242,6 +248,13 @@ namespace Mirror
             // (tick rate is applied in StartServer!)
             if (isHeadless && startOnHeadless)
             {
+                if (players.Length > 0)
+                {
+                    playerPrefab = players[0];
+                }
+                else{
+                    Debug.LogError("There needs to be least 1 player in players list");
+                }
                 StartServer();
             }
         }

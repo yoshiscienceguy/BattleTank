@@ -26,6 +26,7 @@ public class TeamColor : NetworkBehaviour
     void Start()
     {
         GameObject.Find("EntryCamera").SetActive(false);
+        GameObject.Find("HUDui").SetActive(false);
         if (isLocalPlayer)
         {
 
